@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+const chalk = require('chalk')
+
+console.log(chalk.yellow(
+  '\n' +
+  '  wk create is in the developing' +
+  '\n'
+))

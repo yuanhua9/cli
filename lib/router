@@ -1,0 +1,67 @@
+#!/usr/bin/env node
+
+const download = require('download-git-repo')
+const program = require('commander')
+const exists = require('fs').existsSync
+const fs = require('fs')
+const path = require('path')
+const ora = require('ora')
+const home = require('user-home')
+const tildify = require('tildify')
+const chalk = require('chalk')
+const inquirer = require('inquirer')
+const rm = require('rimraf').sync
+const logger = require('./logger')
+const generate = require('./generate')
+const checkVersion = require('./check-version')
+const warnings = require('./warnings')
+const localPath = require('./local-path')
+const Handlebars = require('handlebars')
+
+const isLocalPath = localPath.isLocalPath
+const getTemplatePath = localPath.getTemplatePath
+
+program
+  .command('ini <name>', '111')
+  .action(refresh)
+
+program.parse(process.argv)
+
+function refresh () {
+  // fs.readFileSync(path.join('dist', cssFile), 'utf8')
+  // console.log(`===`, path.join(__dirname, '/a/src/views'))
+
+  const list = fs
+  .readdirSync(path.join('bin', '/a/src/views'), 'utf8')
+  .map(v => ({
+    // console.log(`===`, v)
+    name: v.replace('.vue', ''),
+    file: v
+  }))
+
+  compile({ list },
+    `./bin/a/src/router/index.js`,
+    `./bin/temeplate/index.js`
+  )
+
+  // compile({ list },
+  //     '../a/src/router.js',
+  //     './temeplate/index.js')
+}
+
+/**
+ * 编译模板
+ * @param meta 数据定义
+ * @param filepath 文件路径
+ * @param templatePath 目标路径
+ */
+function compile (meta, filepath, templatePath) {
+  if (fs.existsSync(templatePath)) {
+    const content = fs.readFileSync(templatePath).toString()
+    const result = Handlebars.compile(content)(meta)
+
+    fs.writeFileSync(filepath, result)
+  }
+}
+
+module.exports.ref

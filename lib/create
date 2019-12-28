@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+const chalk = require('chalk')
+
+console.log()
+console.log(
+  `  ` +
+  chalk.yellow(`wk create：`) +
+  'create a new project powered by vue-cli-service' +
+  require('../package.json').version + '.'
+)
+console.log(`wk create is in the developing`)
+console.log()
+console.log(chalk.cyan(`  npm uninstall -g @angel/cli`))
+console.log(chalk.cyan(`  npm install -g @angel/cli`))
+console.log()

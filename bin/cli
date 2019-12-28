@@ -1,0 +1,80 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const pkg = require('../package')
+const chalk = require('chalk')
+const checkVersion = require('../lib/check-version')
+
+/**
+ * version
+ */
+
+program
+  .version(`\n installed: ${chalk.yellow(`${pkg.version}`)} \n`)
+/**
+ * Help.
+ */
+program.on('--help', () => {
+  console.log(chalk.yellow('  Examples:'))
+  console.log()
+  console.log(chalk.gray('    # create a new project with an official template'))
+  console.log('    $ vue init vue-webpack my-project')
+  console.log()
+  // console.log(chalk.gray('    # create a new project straight from a github template'))
+  // console.log('    $ vue init username/repo my-project')
+  console.log()
+})
+
+/**
+ * init 项目
+ */
+program
+  .command('init <template> <app-name>')
+  .description('generate a project from a remote template (legacy API, requires ./init)')
+  .option('-c, --clone', 'Use git clone when fetching remote template')
+  .option('--offline', 'Use cached template')
+  .action((template, appName, cmd) => {
+    require('../lib/init')
+  })
+
+/**
+ * 模板仓库列表
+ */
+program
+  .command('list')
+  .description('show repo list')
+  .action((template, appName, cmd) => {
+    require('../lib/list')
+  })
+
+/**
+ * 检查@angel/cli 版本号
+ */
+program
+.command('check')
+.description(`${pkg.name} show  list`)
+.action((template, appName, cmd) => {
+  checkVersion((done)=>{}, {show: true})
+})
+
+/**
+ * 创建
+ */
+program
+  .command('create')
+  .description('create a new project powered by vue-cli-service')
+  .action((template, appName, cmd) => {
+    require('../lib/create')
+  })
+
+/**
+ * build
+ */
+program
+.command('build')
+.description('build a .js or .vue file in production mode with zero config')
+.action((template, appName, cmd) => {
+  require('../lib/build')
+})
+
+program.parse(process.argv)

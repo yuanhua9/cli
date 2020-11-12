@@ -11,6 +11,6 @@ console.log(
 )
 console.log(`wk create is in the developing`)
 console.log()
-console.log(chalk.cyan(`  npm uninstall -g @angel/cli`))
-console.log(chalk.cyan(`  npm install -g @angel/cli`))
+console.log(chalk.cyan(`  npm uninstall -g @yuanhua/cli`))
+console.log(chalk.cyan(`  npm install -g @yuanhua/cli`))
 console.log()

@@ -18,9 +18,9 @@ process.on('exit', () => {
  */
 
 request({
-  url: 'https://api.github.com/users/angel6-templates/repos',
+  url: 'https://api.github.com/users/angel-templates/repos',
   headers: {
-    'User-Agent': '@angel6/cli'
+    'User-Agent': '@yuanhua/cli'
   }
 }, (err, res, body) => {
   if (err) logger.fatal(err)

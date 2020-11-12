@@ -19,13 +19,13 @@ const localPath = require('./local-path')
 const isLocalPath = localPath.isLocalPath
 const getTemplatePath = localPath.getTemplatePath
 
-// https://github.com/angel6-templates/vue-webpack
+// https://github.com/yuanhua-templates/vue-webpack
 // https://github.com:samfung09/tpl-b#master
 
-const angel = {
+const yuanhua = {
   tmpFileName: `.angel-templates`,
   baseGitUrl: '',
-  defaultGroup: 'angel6-templates',
+  defaultGroup: 'angel-templates',
   defaultBranch: '#master'
 }
 
@@ -60,10 +60,10 @@ const inPlace = !rawName || rawName === '.'
 const name = inPlace ? path.relative('../', process.cwd()) : rawName
 const to = path.resolve(rawName || '.')
 const clone = program.clone || true
-angel.defaultBranch = template.indexOf('#') > -1 ? '' : angel.defaultBranch
+yuanhua.defaultBranch = template.indexOf('#') > -1 ? '' : yuanhua.defaultBranch
 
 // 模板存储临时目录（/Users/user/.angel-templates/webpack）
-const tmp = path.join(userHome, angel.tmpFileName, template.replace(/[\/:]/g, '-'))
+const tmp = path.join(userHome, yuanhua.tmpFileName, template.replace(/[\/:]/g, '-'))
 
 if (program.offline) {
   template = tmp
@@ -119,7 +119,7 @@ function run () {
     checkVersion(() => {
       if (!hasSlash) {
         // use official templates
-        const officialTemplate = `${angel.baseGitUrl}${angel.defaultGroup}/${template}${angel.defaultBranch}`
+        const officialTemplate = `${yuanhua.baseGitUrl}${yuanhua.defaultGroup}/${template}${yuanhua.defaultBranch}`
         if (template.indexOf('#') !== -1) {
           downloadAndGenerate(officialTemplate)
         } else {

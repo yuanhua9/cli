@@ -18,7 +18,7 @@ process.on('exit', () => {
  */
 
 request({
-  url: 'https://api.github.com/users/angel-templates/repos',
+  url: 'https://api.github.com/users/yuanhua-tpl/repos',
   headers: {
     'User-Agent': '@yuanhua/cli'
   }

@@ -29,12 +29,12 @@ program.on('--help', () => {
  * init 项目
  */
 program
-  .command('init <template> <app-name>')
+  .command('create <template> <app-name>')
   .description('前端项目初始化')
   .option('-c, --clone', 'Use git clone when fetching remote template')
   .option('--offline', 'Use cached template')
   .action((template, appName, cmd) => {
-    require('../lib/init')
+    require('../lib/create')
   })
 
 /**
@@ -56,16 +56,6 @@ program
 .action((template, appName, cmd) => {
   checkVersion((done)=>{}, {show: true})
 })
-
-/**
- * 创建
- */
-program
-  .command('create')
-  .description('create a new project powered by vue-cli-service')
-  .action((template, appName, cmd) => {
-    require('../lib/create')
-  })
 
 /**
  * build

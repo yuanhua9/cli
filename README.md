@@ -20,7 +20,7 @@ $ yh check
 
 # 生成项目结构
 # template: 1、vue-webpack   // webpack打包的vue项目
-$ yh init <template> <app-name>
+$ yh create <template> <app-name>
 
 ```
 

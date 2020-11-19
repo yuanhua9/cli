@@ -1,6 +1,6 @@
 {
   "name": "@yuanhua/cli",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "@yuanhua/cli",
   "bin": {
     "yh": "bin/cli"

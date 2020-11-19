@@ -59,7 +59,7 @@ const rawName = program.args[1]
 const inPlace = !rawName || rawName === '.'
 const name = inPlace ? path.relative('../', process.cwd()) : rawName
 const to = path.resolve(rawName || '.')
-const clone = program.clone || true
+const clone = program.clone || false
 yuanhua.defaultBranch = template.indexOf('#') > -1 ? '' : yuanhua.defaultBranch
 
 // 模板存储临时目录（/Users/user/.yuanhua-tpl/webpack）
@@ -159,15 +159,3 @@ function downloadAndGenerate (template) {
     })
   })
 }
-
-// const init = (template, dest, group = defaultGroup) => {
-//   const downloadUrl = `${baseGitUrl}:${group}/${template}#${defaultBranch}`;
-//   gitDownload(downloadUrl, dest, { clone: true }, err => {
-//     if (err) {
-//       const tips = `· Failed to download repo from ${downloadUrl}\n`;
-//       spinner.fail(chalk.red(`  angel `) + tips);
-//       process.exit();
-//     }
-//     spinner.succeed(chalk.green(`   🎉 angel `) + `· Generated "${dest}"\n`);
-//   });
-// };

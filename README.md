@@ -1,5 +1,10 @@
 # @yuanhua/cli
+## 前端多功能脚手架
+- 通过@yuanhua/cli实现交互式的Vue, React, SDK项目脚手架。
 
+**目前提供以下模板**
+- `vue-webpack` 基于vue+webpack的模板库
+- `js-sdk-tpl` 基于webpack或者rollup的JS SDK模板库
 ## Install
 
 ```bash
@@ -18,13 +23,8 @@ $ yh list
 # 检查cli版本号
 $ yh check
 
-# 生成项目结构
-# template: 1、vue-webpack   // webpack打包的vue项目
+# 创建项目
+# template: 支持模板列表请看文章开头
 $ yh create <template> <app-name>
 
 ```
-
-## 说明
-
-> `yh init` 作为项目初始化的脚手架命令，可以快速通过拉远程仓库的取模板创建一个新项目。
-> 初始化阶段可选择项目依赖项。
